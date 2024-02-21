@@ -7,13 +7,13 @@ proporcionado en este enlace: https:// xxxxx. Para lograr esto, debe utilizar la
 https:// usuarioaleatorio.me/ •
 Estos son los pasos a seguir:
 - [x] Obtenga 100 filas de datos utilizando la API.
-- [] Muestra los datos en formato de tabla, similar al ejemplo.
-- [] Proporciona la opción de colorear filas como se muestra en el ejemplo.
-- [] Permitir que los datos se ordenen por país como se muestra en el ejemplo.
-- [] Habilite la posibilidad de eliminar una fila como se muestra en el ejemplo.
-- [] Implementar una característica que permita al usuario restaurar el estado inicial, lo que significa que se recuperarán todas las filas eliminadas.
-- [] Manejar cualquier posible error que pueda ocurrir.
-- [] Implementar una función que permita al usuario filtrar los datos por país.
+- [x] Muestra los datos en formato de tabla, similar al ejemplo.
+- [x] Proporciona la opción de colorear filas como se muestra en el ejemplo.
+- [x] Permitir que los datos se ordenen por país como se muestra en el ejemplo.
+- [x] Habilite la posibilidad de eliminar una fila como se muestra en el ejemplo.
+- [x] Implementar una característica que permita al usuario restaurar el estado inicial, lo que significa que se recuperarán todas las filas eliminadas.
+- [x] Manejar cualquier posible error que pueda ocurrir.
+- [x] Implementar una función que permita al usuario filtrar los datos por país.
 - [] Evitar ordenar nuevamente los datos de los usuarios cuando el usuario está cambiando el filtro por país.
 - [] Ordenar haciendo clic en el encabezado de la columna.
 - [] Proporcione un archivo README.md con instrucciones sobre cómo ejecutar la aplicación.
