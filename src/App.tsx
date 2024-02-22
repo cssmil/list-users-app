@@ -6,6 +6,7 @@ export const App: React.FC = () => {
   const [users, setUsers] = useState<User[]>([])
   const [rowsColor, setRowsColor] = useState(false)
   const [orderTable, setOrderTable] = useState(false)
+  const [tipeOrder, setTipeOrder] = useState('')
   const [filterCountry, setFilterCountry] = useState<string | null>(null)
 
   const originalUsers = useRef<User[]>([])
@@ -14,9 +15,20 @@ export const App: React.FC = () => {
     setRowsColor(!rowsColor)
   }
 
-  const orderByCountry = () => {
-    setOrderTable(!orderTable)
+  const handleOrder = (tipe: string) => {
+    setTipeOrder(tipe)
+    tipe !== tipeOrder
+      ? setOrderTable(true)
+      : setOrderTable(!orderTable)
   }
+
+  const orderBtnText = (() => {
+    if (tipeOrder === 'country') {
+      return orderTable ? 'desordenar' : 'ordenar'
+    } else {
+      return 'ordenar'
+    }
+  })()
 
   const handleDelete = (username: string) => {
     const newUsers = users.filter((user) => user.login.username !== username)
@@ -48,15 +60,29 @@ export const App: React.FC = () => {
       : users
   }, [users, filterCountry])
 
-  const sortedUsers = useMemo(() => {
+  // const sortedUsers = useMemo(() => {
+  //   console.log('render de sortedUsers por btn order')
+  //   return orderTable
+  //     ? filteredUsers.toSorted((a, b) => {
+  //       return a.location.country.localeCompare(b.location.country)
+  //     })
+  //     : filteredUsers
+  // }, [filteredUsers, orderTable])
+
+  const sortedUsers = (() => {
     console.log('render de sortedUsers por btn order')
     return orderTable
       ? filteredUsers.toSorted((a, b) => {
+        if (tipeOrder === 'firstName') {
+          return a.name.first.localeCompare(b.name.first)
+        }
+        if (tipeOrder === 'lastName') {
+          return a.name.last.localeCompare(b.name.last)
+        }
         return a.location.country.localeCompare(b.location.country)
       })
       : filteredUsers
-  }, [filteredUsers, orderTable])
-
+  })()
   // const filteredUsers = (() => {
   //   console.log('render de filterUsed por input')
   //   return (filterCountry !== null && filterCountry.length > 0)
@@ -87,13 +113,13 @@ export const App: React.FC = () => {
               setFilterCountry(e.target.value)
             }}
           />
-          <button onClick={orderByCountry}>{ orderTable ? 'no ordenar' : 'ordenar' }</button>
+          <button onClick={() => { handleOrder('country') }}>{orderBtnText} por país</button>
           <button onClick={resetUsers}>Reset</button>
           <button onClick={changeColor}>Rows color</button>
         </nav>
       </header>
       <main>
-        <ListUsers rowsColor={rowsColor} users={sortedUsers} deleteUser={handleDelete}/>
+        <ListUsers rowsColor={rowsColor} users={sortedUsers} deleteUser={handleDelete} orderBy={handleOrder}/>
       </main>
     </>
   )

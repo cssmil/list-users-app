@@ -2,21 +2,22 @@ import { type FC } from 'react'
 import { type User } from '../types'
 
 interface Props {
+  orderBy: (arg0: string) => void
   deleteUser: (username: string) => void
   rowsColor: boolean
   users: User[]
 }
 
-export const ListUsers: FC<Props> = ({ deleteUser, rowsColor, users }) => {
+export const ListUsers: FC<Props> = ({ orderBy, deleteUser, rowsColor, users }) => {
   return (
     <table className={rowsColor ? 'color_table' : ''}>
       <caption>Lista de usuarios</caption>
       <thead>
         <tr>
           <th>Foto</th>
-          <th><div >Nombre</div></th>
-          <th><div >Apellido</div></th>
-          <th><div >País</div></th>
+          <th><div onClick={() => { orderBy('firstName') }}>Nombre</div></th>
+          <th><div onClick={() => { orderBy('lastName') }}>Apellido</div></th>
+          <th><div onClick={() => { orderBy('country') }}>País</div></th>
           <th>Acciones</th>
         </tr>
       </thead>
