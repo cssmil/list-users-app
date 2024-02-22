@@ -14,9 +14,9 @@ export const ListUsers: FC<Props> = ({ deleteUser, rowsColor, users }) => {
       <thead>
         <tr>
           <th>Foto</th>
-          <th>Nombre</th>
-          <th>Apellido</th>
-          <th>País</th>
+          <th><div >Nombre</div></th>
+          <th><div >Apellido</div></th>
+          <th><div >País</div></th>
           <th>Acciones</th>
         </tr>
       </thead>
